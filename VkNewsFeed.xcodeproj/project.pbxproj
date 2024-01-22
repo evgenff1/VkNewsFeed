@@ -13,7 +13,23 @@
 		278C2AA52B56A10C00F25D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C2AA32B56A10C00F25D5D /* Main.storyboard */; };
 		278C2AA72B56A10F00F25D5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C2AA62B56A10F00F25D5D /* Assets.xcassets */; };
 		278C2AAA2B56A10F00F25D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C2AA82B56A10F00F25D5D /* LaunchScreen.storyboard */; };
+		27F60F702B5E9E8E009FD933 /* VKSdkFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F60F6F2B5E9E8E009FD933 /* VKSdkFramework.xcframework */; };
+		27F60F712B5E9E8E009FD933 /* VKSdkFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27F60F6F2B5E9E8E009FD933 /* VKSdkFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27F60F722B5E9E8E009FD933 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				27F60F712B5E9E8E009FD933 /* VKSdkFramework.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		278C2A9A2B56A10C00F25D5D /* VkNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,7 @@
 		278C2AA62B56A10F00F25D5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		278C2AA92B56A10F00F25D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		278C2AAB2B56A10F00F25D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27F60F6F2B5E9E8E009FD933 /* VKSdkFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VKSdkFramework.xcframework; path = Carthage/Build/VKSdkFramework.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F60F702B5E9E8E009FD933 /* VKSdkFramework.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +60,7 @@
 			children = (
 				278C2A9C2B56A10C00F25D5D /* VkNewsFeed */,
 				278C2A9B2B56A10C00F25D5D /* Products */,
+				27F60F6E2B5E9E8E009FD933 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +86,14 @@
 			path = VkNewsFeed;
 			sourceTree = "<group>";
 		};
+		27F60F6E2B5E9E8E009FD933 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27F60F6F2B5E9E8E009FD933 /* VKSdkFramework.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +104,8 @@
 				278C2A962B56A10C00F25D5D /* Sources */,
 				278C2A972B56A10C00F25D5D /* Frameworks */,
 				278C2A982B56A10C00F25D5D /* Resources */,
+				27F60F6D2B5E9CE8009FD933 /* ShellScript */,
+				27F60F722B5E9E8E009FD933 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +161,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27F60F6D2B5E9CE8009FD933 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		278C2A962B56A10C00F25D5D /* Sources */ = {

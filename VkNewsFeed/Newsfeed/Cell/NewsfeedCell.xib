@@ -41,7 +41,7 @@
                         </subviews>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-YE-alA">
-                        <rect key="frame" x="9" y="55" width="356" height="103"/>
+                        <rect key="frame" x="9" y="55" width="356" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -121,6 +121,10 @@
                             </view>
                         </subviews>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owu-1G-jIG" customClass="WebImageView" customModule="VkNewsFeed" customModuleProvider="target">
+                        <rect key="frame" x="9" y="114" width="350" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -129,6 +133,7 @@
                 <outlet property="iconImageView" destination="Ne4-4U-Gvh" id="nRv-8E-uFi"/>
                 <outlet property="likesLabel" destination="q0d-O6-a7h" id="H7l-vy-JBi"/>
                 <outlet property="nameLabel" destination="VJR-Ak-2PQ" id="7hw-Eg-vaX"/>
+                <outlet property="postImageView" destination="Owu-1G-jIG" id="Bo8-Av-Y87"/>
                 <outlet property="postLabel" destination="Sfc-YE-alA" id="hfs-QB-GZb"/>
                 <outlet property="sharesLabel" destination="g7d-KF-ZbZ" id="0ar-Lw-r8Z"/>
                 <outlet property="viewsLabel" destination="w9g-Jd-VXc" id="qb1-KT-ixo"/>

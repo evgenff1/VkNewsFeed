@@ -50,6 +50,8 @@ final class NewsFeedCodeCell: UITableViewCell {
         return button
     }()
     
+    let galleryCollectionView = GalleryCollectionView()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
@@ -219,15 +221,24 @@ final class NewsFeedCodeCell: UITableViewCell {
         viewsLabel.text = viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
+
         bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
-        if let photoAttachment = viewModel.photoAttachement {
-            postImageView.set(imageURL: photoAttachment.photoUrlString)
+        if let photoAttachment = viewModel.photoAttachements.first, viewModel.photoAttachements.count == 1 {
             postImageView.isHidden = false
-        } else {
+            galleryCollectionView.isHidden = true
+            postImageView.set(imageURL: photoAttachment.photoUrlString)
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachements.count > 1 {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            galleryCollectionView.set(photos: viewModel.photoAttachements)
+        }
+        else {
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
     }
     
@@ -329,6 +340,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         
         //topView constraints

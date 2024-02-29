@@ -66,7 +66,6 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsfeedCo
     
     //MARK: Setup NewsfeedCodeCellDelegate
     func revealPost(for cell: NewsFeedCodeCell) {
-        print("54321")
         guard let indexPath = table.indexPath(for: cell) else { return }
         let cellViewModel = feedViewModel.cells[indexPath.row]
         

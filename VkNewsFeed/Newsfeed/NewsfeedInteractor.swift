@@ -38,6 +38,10 @@ class NewsfeedInteractor: NewsfeedBusinessLogic {
           revealedPostIds.append(postId)
           
           presentFeed()
+      case .getUser:
+          fetcher.getUser { [weak self] (userResponse) in
+              self?.presenter?.presentData(response: Newsfeed.Model.Response.ResponseType.presentUserInfo(user: userResponse))
+          }
       }
   }
     

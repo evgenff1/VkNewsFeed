@@ -16,17 +16,18 @@ enum Newsfeed {
         case getNewsfeed
         case getUser
         case revealPostIds(postId: Int)
+        case getNextBatch
       }
     }
     struct Response {
       enum ResponseType {
-          case presentNewsFeed(feed: FeedResponse, revealdedPostIds: [Int])
+          case presentNewsfeed(feed: FeedResponse, revealdedPostIds: [Int])
           case presentUserInfo(user: UserResponse?)
       }
     }
     struct ViewModel {
       enum ViewModelData {
-        case displayNewsFeed(feedViewModel: FeedViewModel)
+        case displayNewsfeed(feedViewModel: FeedViewModel)
         case displayUser(userViewModel: UserViewModel)
       }
     }

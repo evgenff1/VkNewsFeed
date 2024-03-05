@@ -24,7 +24,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsfeedCo
     private var titleView = TitleView()
     private lazy var footerView = FooterView()
     
-    private var refreshControl: UIRefreshControl = {
+    private lazy var refreshControl: UIRefreshControl = {
        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return refreshControl
@@ -56,17 +56,20 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsfeedCo
         setupTable()
         setupTopBars()
         
-        view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        
         interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getNewsfeed)
         interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getUser)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupStatusBar()
     }
     
     private func setupTable() {
         let topInset: CGFloat = 8
         table.contentInset.top = topInset
         
-        table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+//        table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
         table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
         
         table.separatorStyle = .none
@@ -77,9 +80,22 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsfeedCo
     }
     
     private func setupTopBars() {
-        self.navigationController?.hidesBarsOnSwipe = true
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.titleView = titleView
+        navigationController?.navigationBar.backgroundColor = .systemOrange
+        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = titleView
+    }
+    
+    private func setupStatusBar() {
+        if let statusBarFrame = view.window?.windowScene?.statusBarManager?.statusBarFrame {
+            let statusBar = UIView(frame: statusBarFrame)
+            statusBar.backgroundColor = navigationController?.navigationBar.backgroundColor
+            statusBar.layer.shadowColor = UIColor.black.cgColor
+            statusBar.layer.shadowOpacity = 0.3
+            statusBar.layer.shadowOffset = .zero
+            statusBar.layer.shadowRadius = 8
+            view.addSubview(statusBar)
+        }
     }
     
     @objc private func refresh() {
